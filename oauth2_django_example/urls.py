@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from oauth2_django_example.admin_site_custom_views import CustomLoginView
+
+admin.site.login = CustomLoginView.as_view()
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
