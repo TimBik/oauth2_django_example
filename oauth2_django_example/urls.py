@@ -17,10 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from oauth2_django_example.admin_site_custom_views import CustomLoginView
-
-admin.site.login = CustomLoginView.as_view()
+from oauth2_django_example.admin_site_custom_views import GitHubLoginView, GitHubAuthorizeView, GoogleLoginView, \
+    GoogleAuthorizeView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('oauth2/github/login/', GitHubLoginView.as_view(), name="github_login"),
+    path('oauth2/github/authorize/', GitHubAuthorizeView.as_view(), name="github_authorize"),
+    path('oauth2/google/login/', GoogleLoginView.as_view(), name="google_login"),
+    path('oauth2/google/authorize/', GoogleAuthorizeView.as_view(), name="google_authorize"),
+
 ]

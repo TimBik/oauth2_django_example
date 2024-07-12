@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -72,14 +73,20 @@ TEMPLATES = [
 
 AUTHLIB_OAUTH_CLIENTS = {
     'github': {
-        'client_id': os.getenv('client_id'),
-        'client_secret': os.getenv('client_secret'),
+        'client_id': os.getenv('github_client_id'),
+        'client_secret': os.getenv('github_client_secret'),
         'access_token_url': 'https://github.com/login/oauth/access_token',
         'access_token_params': None,
         'authorize_url': 'https://github.com/login/oauth/authorize',
         'authorize_params': None,
         'api_base_url': 'https://api.github.com/',
-    }
+    },
+    'google': {
+        'client_id': os.getenv('google_client_id'),
+        'client_secret': os.getenv('google_client_secret'),
+        'server_metadata_url' : 'https://accounts.google.com/.well-known/openid-configuration'
+    },
+
 }
 
 AUTHENTICATION_BACKENDS = [
