@@ -23,13 +23,12 @@ class GitHubLoginView(APIView):
 
 class GitHubAuthorizeView(APIView):
     def get(self, request, *args, **kwargs):
-        # user = authenticate(request)
         oauth = GitHubOAuth2()
         user_info = oauth.authorize(request)
         return Response(
             data={**user_info},
             status=status.HTTP_200_OK)
-        # return user_info
+
 
 class GoogleLoginView(APIView):
     def get(self, request, *args, **kwargs):
@@ -44,6 +43,7 @@ class GoogleLoginView(APIView):
         oauth = GoogleOAuth2()
         redirect_uri = request.build_absolute_uri('/oauth2/google/authorize')
         return oauth.login(request, redirect_uri)
+
 
 class GoogleAuthorizeView(APIView):
     def get(self, request, *args, **kwargs):

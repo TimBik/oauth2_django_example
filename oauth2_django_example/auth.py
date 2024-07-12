@@ -9,7 +9,7 @@ class OAuth2Authentication(ModelBackend):
 
         self.oauth.register(
             'github',
-                client_kwargs={'scope': 'openid email'},
+            client_kwargs={'scope': 'openid email'},
         )
 
     def authenticate(self, request: HttpRequest, username=None, password=None, **kwargs):

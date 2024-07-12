@@ -18,6 +18,7 @@ class OAuth2Base:
     def authorize(self, request):
         return self.oauth.authorize_access_token(request)
 
+
 class GitHubOAuth2(OAuth2Base):
     def __init__(self, **kwargs):
         super(GitHubOAuth2, self).__init__(
@@ -25,6 +26,7 @@ class GitHubOAuth2(OAuth2Base):
             client_kwargs={'scope': 'openid email'},
             **kwargs,
         )
+
     def authorize(self, request):
         token = super().authorize(request)
         resp_user: Response = self.oauth.get('user', token=token)
