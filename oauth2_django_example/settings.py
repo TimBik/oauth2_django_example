@@ -89,9 +89,6 @@ AUTHLIB_OAUTH_CLIENTS = {
 
 }
 
-AUTHENTICATION_BACKENDS = [
-    'oauth2_django_example.auth.OAuth2Authentication',
-]
 
 WSGI_APPLICATION = 'oauth2_django_example.wsgi.application'
 
